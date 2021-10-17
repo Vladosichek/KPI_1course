@@ -31,8 +31,9 @@ int main()
 			sin1 = sin(pow1);
 			b = (pow(x, 2 * i) * sin1) / (pow(i, 2));
 			sum = sum + b;
+			cout << i << endl << sum << endl;
 		}
-		cout << sum << endl;
+		//cout << sum << endl;
 	}
 	else
 	{

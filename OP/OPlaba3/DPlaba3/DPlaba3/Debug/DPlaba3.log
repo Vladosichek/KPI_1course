@@ -1,3 +1,3 @@
 ﻿  DPlaba3.cpp
-D:\Install\Projects\KPI_OP\OPlaba3\DPlaba3\DPlaba3\DPlaba3.cpp(24,41): warning C4244: =: преобразование "double" в "__int64", возможна потеря данных
-  DPlaba3.vcxproj -> D:\Install\Projects\KPI_OP\OPlaba3\DPlaba3\Debug\DPlaba3.exe
+D:\Install\GitHub\KPI_1course\OP\OPlaba3\DPlaba3\DPlaba3\DPlaba3.cpp(24,41): warning C4244: =: преобразование "double" в "__int64", возможна потеря данных
+  DPlaba3.vcxproj -> D:\Install\GitHub\KPI_1course\OP\OPlaba3\DPlaba3\Debug\DPlaba3.exe
