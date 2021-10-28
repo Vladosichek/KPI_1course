@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OPlaba4", "OPlaba4\OPlaba4.vcxproj", "{97707EC4-2A9F-44EB-B009-280AF0C4A895}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97707EC4-2A9F-44EB-B009-280AF0C4A895}.Debug|x64.ActiveCfg = Debug|x64
+		{97707EC4-2A9F-44EB-B009-280AF0C4A895}.Debug|x64.Build.0 = Debug|x64
+		{97707EC4-2A9F-44EB-B009-280AF0C4A895}.Debug|x86.ActiveCfg = Debug|Win32
+		{97707EC4-2A9F-44EB-B009-280AF0C4A895}.Debug|x86.Build.0 = Debug|Win32
+		{97707EC4-2A9F-44EB-B009-280AF0C4A895}.Release|x64.ActiveCfg = Release|x64
+		{97707EC4-2A9F-44EB-B009-280AF0C4A895}.Release|x64.Build.0 = Release|x64
+		{97707EC4-2A9F-44EB-B009-280AF0C4A895}.Release|x86.ActiveCfg = Release|Win32
+		{97707EC4-2A9F-44EB-B009-280AF0C4A895}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CB0FA6B-58FB-4B50-B5CD-63046200E3CB}
+	EndGlobalSection
+EndGlobal
