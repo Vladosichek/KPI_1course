@@ -46,7 +46,7 @@ int main()
         }
         if (max - a > a - min)
         {
-            cout << "The nearest min: ""The nearest min: " << min << endl;
+            cout << "The nearest min: " << min << endl;
         }
         else
         {
