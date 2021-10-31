@@ -9,7 +9,7 @@ int main()
 	// Declaring all needed variables
 	double x;
 	long double sum = 0;
-	long long a = 1;
+	long double a = 1;
 	double b;
 	long double pow1;
 	long double sin1;
@@ -21,7 +21,9 @@ int main()
 		while (abs(a) >= 0.0001)
 		{
 			k++;
-			a = (pow(x, 2 * k) * sin(pow(x, k))) / (pow(k, 2));
+			pow1 = pow(x, k);
+			sin1 = sin(pow1);
+			a = (pow(x, 2 * k) * sin1) / (pow(k, 2));
 		}
 		int i = 0;
 		while (i < k)
@@ -33,7 +35,7 @@ int main()
 			sum = sum + b;
 			cout << i << endl << sum << endl;
 		}
-		//cout << sum << endl;
+		cout <<"The sum is: "<< sum << endl;
 	}
 	else
 	{
