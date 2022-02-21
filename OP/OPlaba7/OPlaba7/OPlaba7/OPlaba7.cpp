@@ -2,11 +2,11 @@
 #include<cmath>
 #include <time.h>
 using namespace std;
-void generate(float* p, int l);
-void output(float* p, int l);
-float special_average(float* p, int l, int e);
-void change(float* p, int l, int e, float g);
-int main() {
+void generate(float*, int);
+void output(float*, int);
+float special_average(float*, int, int);
+void change(float*, int, int, float);
+void main() {
 	const int c = 100;
 	float M[c];
 	float q;

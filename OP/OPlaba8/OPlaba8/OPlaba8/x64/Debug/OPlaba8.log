@@ -1,0 +1,7 @@
+﻿  OPlaba8.cpp
+D:\Install\GitHub\KPI_1course\OP\OPlaba8\OPlaba8\OPlaba8\OPlaba8.cpp(12,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+D:\Install\GitHub\KPI_1course\OP\OPlaba8\OPlaba8\OPlaba8\OPlaba8.cpp(21,8): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+D:\Install\GitHub\KPI_1course\OP\OPlaba8\OPlaba8\OPlaba8\OPlaba8.cpp(44,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Install\GitHub\KPI_1course\OP\OPlaba8\OPlaba8\OPlaba8\OPlaba8.cpp(47,30): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\Install\GitHub\KPI_1course\OP\OPlaba8\OPlaba8\OPlaba8\OPlaba8.cpp(72,9): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+  OPlaba8.vcxproj -> D:\Install\GitHub\KPI_1course\OP\OPlaba8\OPlaba8\x64\Debug\OPlaba8.exe

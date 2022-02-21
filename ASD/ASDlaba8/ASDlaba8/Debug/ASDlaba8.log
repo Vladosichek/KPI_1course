@@ -1,0 +1,4 @@
+﻿  ASDlaba8.cpp
+D:\Install\GitHub\KPI_1course\ASD\ASDlaba8\ASDlaba8\ASDlaba8.cpp(12,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+D:\Install\GitHub\KPI_1course\ASD\ASDlaba8\ASDlaba8\ASDlaba8.cpp(39,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  ASDlaba8.vcxproj -> D:\Install\GitHub\KPI_1course\ASD\ASDlaba8\Debug\ASDlaba8.exe

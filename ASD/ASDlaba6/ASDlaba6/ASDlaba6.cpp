@@ -1,37 +1,30 @@
 ﻿#include<iostream>
 #include<cmath>
 using namespace std;
-int trian(int u, int j, int n);
-int main() {
+void tr(int, float);
+void main() {
 	float n;
-	int a;
-	int b;
-	int c;
-	int p;
-	cout << "Enter n:";
+	int s = 5;
+	cout << " Enter n:";
 	cin >> n;
-	cout << "Pifagor's triangles:" << endl;
-	for (c = 1; c <= n; c += 1) {
-		for (b = 1; b <= c; b += 1) {
-			for (a = 1; a <= b; a += 1) {
-				p = trian(a, b, c);
-				if ( p == 1) {
-					cout << a << "|" << b << "|" << c << endl;
+	cout << "Pifagor triangles: " << endl;
+	tr(s, n);
+	cout << endl;
+	system("pause");
+}
+void tr(int c, float l) {
+	int a = 3;
+	int b = 4;
+	if (c > l) {
+	}
+	else {
+		for (b = 4; b < c; b++) {
+			for (a = 3; a < b; a++) {
+				if (a * a + b * b == c * c) {
+					printf("%1d%12d%12d\n", a, b, c);
 				}
 			}
 		}
+		tr(c + 1, l);
 	}
-	return 0;
-	system("pause");
-}
-int trian(int u, int j, int q){
-	int f;
-	f = 0;
-	if (u * u + j * j == q * q) {
-		f=1;
-	}
-	else {
-		f=0;
-	}
-	return f;
 }

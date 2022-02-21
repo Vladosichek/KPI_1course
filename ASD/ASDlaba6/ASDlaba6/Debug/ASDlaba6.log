@@ -1,2 +1,3 @@
 ﻿  ASDlaba6.cpp
+D:\Install\GitHub\KPI_1course\ASD\ASDlaba6\ASDlaba6\ASDlaba6.cpp(5,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
   ASDlaba6.vcxproj -> D:\Install\GitHub\KPI_1course\ASD\ASDlaba6\Debug\ASDlaba6.exe

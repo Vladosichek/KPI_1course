@@ -1,4 +1,5 @@
 ﻿  OPlaba7.cpp
+D:\Install\GitHub\KPI_1course\OP\OPlaba7\OPlaba7\OPlaba7\OPlaba7.cpp(9,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
 D:\Install\GitHub\KPI_1course\OP\OPlaba7\OPlaba7\OPlaba7\OPlaba7.cpp(32,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
 D:\Install\GitHub\KPI_1course\OP\OPlaba7\OPlaba7\OPlaba7\OPlaba7.cpp(34,33): warning C4244: =: преобразование "double" в "float", возможна потеря данных
   OPlaba7.vcxproj -> D:\Install\GitHub\KPI_1course\OP\OPlaba7\OPlaba7\Debug\OPlaba7.exe

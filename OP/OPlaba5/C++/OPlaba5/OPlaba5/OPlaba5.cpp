@@ -53,4 +53,6 @@ int main()
             cout << "The nearest max: " << max << endl;
         }
     }
+    return 0;
+    system("pause");
 }
