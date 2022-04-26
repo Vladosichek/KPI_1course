@@ -56,3 +56,18 @@ Worker* fill(int q) {
     }
     return A;
 }
+Worker::Worker() {};
+Worker::Worker(string patronym, string name, string surname, string date) {
+    this->patronym = patronym;
+    this->name = name;
+    this->surname = surname;
+    this->date = date;
+};
+string Worker::GetPatronym() { return this->patronym; };
+string Worker::GetName() { return this->name; };
+string Worker::GetSurname() { return this->surname; };
+string Worker::GetDate() { return this->date; };
+void Worker::SetPatronym(string patronym_new) { patronym = patronym_new; };
+void Worker::SetName(string name_new) { name = name_new; };
+void Worker::SetSurname(string surname_new) { surname = surname_new; };
+void Worker::SetDate(string date_new) { date = date_new; };
