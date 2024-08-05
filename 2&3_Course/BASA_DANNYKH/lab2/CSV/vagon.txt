@@ -1,0 +1,4 @@
+vagon_number,vagon_type,train_id
+3,passenger,2
+1,passenger,1
+4,passenger,3

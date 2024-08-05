@@ -1,0 +1,36 @@
+2023-12-04 16:53:57,123 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2023-12-04 16:53:57,140 INFO o.a.j.JMeter: Loading user properties from: user.properties
+2023-12-04 16:53:57,140 INFO o.a.j.JMeter: Loading system properties from: system.properties
+2023-12-04 16:53:57,145 INFO o.a.j.JMeter: Copyright (c) 1998-2023 The Apache Software Foundation
+2023-12-04 16:53:57,146 INFO o.a.j.JMeter: Version 5.6.2
+2023-12-04 16:53:57,146 INFO o.a.j.JMeter: java.version=18.0.1.1
+2023-12-04 16:53:57,146 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2023-12-04 16:53:57,146 INFO o.a.j.JMeter: os.name=Windows 10
+2023-12-04 16:53:57,146 INFO o.a.j.JMeter: os.arch=amd64
+2023-12-04 16:53:57,146 INFO o.a.j.JMeter: os.version=10.0
+2023-12-04 16:53:57,146 INFO o.a.j.JMeter: file.encoding=UTF-8
+2023-12-04 16:53:57,146 INFO o.a.j.JMeter: java.awt.headless=null
+2023-12-04 16:53:57,146 INFO o.a.j.JMeter: Max memory     =1073741824
+2023-12-04 16:53:57,146 INFO o.a.j.JMeter: Available Processors =16
+2023-12-04 16:53:57,155 INFO o.a.j.JMeter: Default Locale=English (EN)
+2023-12-04 16:53:57,155 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2023-12-04 16:53:57,155 INFO o.a.j.JMeter: JMeterHome=E:\Install\Projects\KPI4\JMeter\apache-jmeter-5.6.2
+2023-12-04 16:53:57,155 INFO o.a.j.JMeter: user.dir  =E:\Install\Projects\KPI4\JMeter\apache-jmeter-5.6.2\bin
+2023-12-04 16:53:57,156 INFO o.a.j.JMeter: PWD       =E:\Install\Projects\KPI4\JMeter\apache-jmeter-5.6.2\bin
+2023-12-04 16:54:01,688 INFO o.a.j.JMeter: IP: 192.168.56.1 Name: DESKTOP-V5EN5AT FullName: DESKTOP-V5EN5AT
+2023-12-04 16:54:01,706 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2023-12-04 16:54:01,858 INFO o.a.j.JMeterGuiLauncher: Setting LAF to: laf:com.sun.java.swing.plaf.windows.WindowsLookAndFeel
+2023-12-04 16:54:15,094 INFO o.a.j.s.FileServer: Default base='E:\Install\Projects\KPI4\JMeter\apache-jmeter-5.6.2\bin'
+2023-12-04 16:54:15,096 INFO o.a.j.g.a.Load: Loading file: E:\Install\Projects\KPI4\PryshchepaJMeterLab.jmx
+2023-12-04 16:54:15,097 INFO o.a.j.s.FileServer: Set new base='E:\Install\Projects\KPI4'
+2023-12-04 16:54:15,238 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2023-12-04 16:54:15,256 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2023-12-04 16:54:15,258 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2023-12-04 16:54:15,259 INFO o.a.j.s.SaveService: Loading file: E:\Install\Projects\KPI4\PryshchepaJMeterLab.jmx
+2023-12-04 16:54:15,281 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-12-04 16:54:15,281 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-12-04 16:54:15,281 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-12-04 16:54:15,281 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-12-04 16:54:15,281 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2023-12-04 16:54:15,281 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2023-12-04 16:54:15,394 INFO o.a.j.s.FileServer: Set new base='E:\Install\Projects\KPI4'

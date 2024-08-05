@@ -1,0 +1,80 @@
+Restore Archived Project report for Prishchepa_Vladislav
+Sat May 25 07:30:05 2024
+Quartus II Version 9.1 Build 222 10/21/2009 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Sat May 25 07:30:05 2024 ;
+; Revision Name                   ; Prishchepa_Vladislav                  ;
+; Top-level Entity Name           ; Prishchepa_Vladislav                  ;
+; Family                          ; Cyclone III                           ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored 'E:/Install/Projects/FPGA/Lab1/Prishchepa_Vladislav.qar' into the 'E:/Install/Projects/FPGA/Lab1/Prishchepa_Vladislav_restored/' directory
+Info: Generated report 'Prishchepa_Vladislav.restore.rpt'
+Info: Evaluation of Tcl script c:/altera/91/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus II Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 138 megabytes
+    Info: Processing ended: Sat May 25 07:30:05 2024
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+
++----------------------------------+
+; Files Restored                   ;
++----------------------------------+
+; File Name                        ;
++----------------------------------+
+; LC1_Prishchepa.bdf               ;
+; Prishchepa_Vladislav.bdf         ;
+; Prishchepa_Vladislav.qpf         ;
+; Prishchepa_Vladislav.qsf         ;
+; Prishchepa_Vladislav.vwf         ;
+; db/Prishchepa_Vladislav.sim.cvwf ;
+; assignment_defaults.qdf          ;
++----------------------------------+
+
+
++--------------------+
+; Files Not Restored ;
++--------------------+
+; File Name          ;
++--------------------+
+
+

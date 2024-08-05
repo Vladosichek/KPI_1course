@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+double calcZOne(double alpha);
+double calcZTwo(double alpha);
+
+int main() {
+    char inp[255] = {0};
+    printf("Alpha: ");
+    fgets(inp, sizeof(inp), stdin);
+    double alpha = strtod(inp, NULL);
+    
+    double zOneRes = calcZOne(alpha);
+    double zTwoRes = calcZTwo(alpha);
+    
+    printf("Z1 = cos(a) + sin(a) + cos(3a) + sin(3a) = %lf\n", zOneRes);
+    printf("Z2 = 2 * sqrt(2) * cos(a) * sin(Pi / 4 + 2a) = %lf\n", zTwoRes);
+    return 0;
+}
+
+double calcZOne(double number) {
+    double zOne = cos(number) + sin(number);
+    zOne += cos(3 * number) + sin(3 * number);
+    return zOne;
+}
+
+double calcZTwo(double number) {
+    double zTwo = 2 * sqrt(2);
+    zTwo *= cos(number);
+    zTwo *= sin(0.25 * M_PI + 2 * number);
+    return zTwo;
+}

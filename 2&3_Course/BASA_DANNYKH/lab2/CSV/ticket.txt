@@ -1,0 +1,4 @@
+price,buyer_id,seat_id,first_stop_id,last_stop_id
+214.22,3,2,1,3
+172.57,4,4,2,3
+333.15,5,7,4,6

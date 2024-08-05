@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PIIS_lab4_2", "PIIS_lab4_2\PIIS_lab4_2.pyproj", "{B546EC95-CE67-4138-9111-9B9EE11996BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B546EC95-CE67-4138-9111-9B9EE11996BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B546EC95-CE67-4138-9111-9B9EE11996BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64E23082-4FE3-4782-BC0D-B95400A030C0}
+	EndGlobalSection
+EndGlobal

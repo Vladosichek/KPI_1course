@@ -1,0 +1,61 @@
+1.1. Назвіть зв'язок. Який текст відповідає діаграмі?
+
+Цей зв'язок є "Багато до одного"
+b. Кожен співробітник ( EMPLOYEE ) повинен бути призначений лише для одного відділу ( DEPARTMENT ). 
+Кожен відділ ( DEPARTMENT ) несе відповідальність за одного або кількох співробітників ( EMPLOYEE ).
+
+1.2. Назвіть кожний зв'язок в представленій нижче моделі. Напишіть ERD-інструкцію і свої коментарі для кожного зв'язку. 
+При додаванні коментарів використовуйте відому інформацію про звичайних людей та міста.
+
+По данному малюнку підемо з гори вниз.
+1) Один до багатьох.
+EACH PERSON MUST BE BORN IN ONE OR MORE TOWN.
+EACH TOWN MAY BE BIRTHPLACE OF ONE AND ONLY ONE PERSON.
+Коментар: Ідея того, що в кожному містечку може родитися виключно до однієї людини, а одна людина може народитися в декількох містечках, є некоректною. Тому я наведу приклад з урахуванням виправлення цієї помилки. У кожному населеному пункті України може народитися багато дітей або не народитися зовсім (наприклад Прип'ять після 1986). Кожна людина, що народилася на теренах України, могла народитися як і в населеному пункті, так і на шляху до районної лікарні за межами населеного пункту.
+
+2) Багато до одного.
+EACH PERSON MUST BE LIVING IN ONE AND ONLY ONE TOWN.
+EACH TOWN MAY BE HOMETOWN OF ONE OR MORE PERSON.
+Коментар: Кожна людина (принаймні сучасної Європи) проживає саме в населених пунктах. Але є й такі населені пункти, в яких ніхто не проживає: міста-заводи, міста, що кинуті після масованих обстрілів чи техногенних катастроф.
+
+3) Багато до багатьох.
+EACH PERSON MAY BE VISITOR OF ONE OR MORE TOWN.
+EACH TOWN MUST BE VISITED BY ONE OR MORE PERSON.
+Коментар: По всьому світі люди подорожують. До кожного міста люди навідуються по роботі, як туристи чи на гостини. Але є й такі люди, які цього не роблять.
+
+4) Один до одного.
+EACH PERSON MAY BE MAYOR OF ONE AND ONLY ONE TOWN.
+EACH TOWN MAY BE GOVERNED BY ONE AND ONLY ONE PERSON.
+Коментар: Не кожна людина є мером міста, і якщо вона такою є, то виключно одного. Але не всі міста мають мерів, бо деякі з них покинуті і в них ніхто не живе.
+
+2.1. Напишіть ERD-інструкцію для кожною зв'язку в академічній базі даних, включаючи ім'я зв'язку, факультативність та
+кардинальність. Намалюйте ERD діаграму зі зв'язками.
+
+Course - курс як предмет
+Department - кафедра
+Faculty - викладач
+Academic Session - академічна сесія
+Parent information - інформація про батьків
+Student - студент
+Exam - екзамен
+
+1)EACH DEPARTMENT MUST HAVE ONE OR MORE COURSE.
+EACH COURSE MUST BELONG TO ONE AND ONLY ONE DEPARTMENT.
+
+2)EACH DEPARTMENT MUST BE PLACE OF WORK FOR ONE OR MORE FACULTY.
+EACH FACULTY MUST WORK AT ONE OR MORE DEPARTMENT.
+
+3)EACH FACULTY MUST TEACH ONE OR MORE COURSE.
+EACH COURSE MUST HAVE ONE OR MORE FACULTY.
+
+4)EACH COURSE MUST BE PART OF ONE AND ONLY ONE ACADEMIC SESSION.
+EACH ACADEMIC SESSION MUST CONTAIN ONE OR MORE COURSE.
+
+5)EACH COURSE MUST BE CHOSEN BY ONE OR MORE STUDENT.
+EACH STUDENT MUST CHOOSE OF ONE OR MORE COURSE.
+
+6)EACH STUDENT MUST TAKE ONE OR MORE EXAM.
+EACH EXAM MUST BE TAKEN BY ONE OR MORE STUDENT.
+
+7)EACH STUDENT MAY HAVE ONE AND ONLY ONE PARENT INFORMATION.
+EACH PARENT INFORMATION MUST BE HAD BY ONE AND ONLY ONE STUDENT.

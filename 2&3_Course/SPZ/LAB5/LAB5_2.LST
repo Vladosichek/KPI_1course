@@ -1,0 +1,648 @@
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 1
+Lab5_2.asm
+
+
+
+      1				     input_digit macro
+      2
+      3				     ;input a string
+      4				       lea dx, inar
+      5				       mov ah, 10
+      6				       int 21h
+      7
+      8				     ;print a new line after the input
+      9				       mov al,10
+     10				       int 29h
+     11				       mov al,13
+     12				       int 29h
+     13				     endm
+     14
+     15				     str_to_int	macro inarr
+     16				     local convert_loop, check_minus, convert_to_digit,	error_1, error_2, last,	finish
+     17
+     18				     ;load the address of first	element	of the array
+     19				       mov si, offset inarr + 2
+     20				       mov cx, 0
+     21
+     22				     ;check if inarr is	empty
+     23				       mov ax, 0
+     24				       mov al, inarr + 1
+     25				       cmp al, 0
+     26				       je error_1
+     27
+     28				     ;converting of the	array into number
+     29				       convert_loop:
+     30
+     31				     ;check if it is the end of	inarr
+     32					 mov ax, 0
+     33					 mov al, inarr + 1
+     34					 cmp al, cl
+     35					 je last
+     36
+     37				     ;set element of inarr to al
+     38					 mov al, [si]
+     39
+     40				     ;check if the character is	between	"0" and	"9"
+     41					 cmp al, '0'
+     42					 jl check_minus
+     43					 cmp al, '9'
+     44					 jg error_1
+     45					 inc cx
+     46					 inc si
+     47
+     48				     ;jump for converting character to digit
+     49					 jmp convert_to_digit
+     50
+     51				     ;check character for "-"
+     52				       check_minus:
+     53					 cmp al, '-'
+     54					 jne error_1
+     55
+     56				     ;check if it is the first element in inarr
+     57					 cmp cx, 0
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 2
+Lab5_2.asm
+
+
+
+     58					 jne error_1
+     59					 mov is_negative, 1
+     60					 inc cx
+     61					 inc si
+     62					 jmp convert_loop
+     63
+     64				     ;converting character to digit
+     65				       convert_to_digit:
+     66					 sub al, '0'
+     67					 mov digit, ax
+     68					 mov bx, 10
+     69					 mov ax, num
+     70					 mul bx
+     71					 jc error_2
+     72					 js error_2
+     73					 mov num, ax
+     74					 mov ax, digit
+     75					 add num, ax
+     76					 jc error_2
+     77					 js error_2
+     78					 jmp convert_loop
+     79
+     80				     ;Used wrong symbol(s)
+     81				       error_1:
+     82					 mov is_error, 1
+     83					 jmp finish
+     84
+     85				     ;Inputed number out of range
+     86				       error_2:
+     87					 mov is_error, 2
+     88					 jmp finish
+     89
+     90				     ;check if the number is negative
+     91				       last:
+     92					 cmp is_negative, 1
+     93					 jne finish
+     94					 neg num
+     95
+     96				       finish:
+     97				     endm
+     98
+     99				     calc_res macro xpar
+    100				     local x_zero, x_less, error, finishs
+    101
+    102				     ;compare xpar with	0
+    103				       cmp xpar, 0
+    104				       je x_zero
+    105				       jl x_less
+    106
+    107				     ;xpar>0 z=5*(4*xpar+7)/((xpar+1)*(xpar+2))
+    108				       mov ax, xpar
+    109				       add ax, 1
+    110				       jc error
+    111				       mov bx, ax
+    112				       add ax, 1
+    113				       jc error
+    114				       mul bx
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 3
+Lab5_2.asm
+
+
+
+    115				       jc error
+    116				       mov denom, ax
+    117				       mov ax, xpar
+    118				       mov bx, 4
+    119				       mul bx
+    120				       jc error
+    121				       add ax, 7
+    122				       jc error
+    123				       mov bx, 5
+    124				       mul bx
+    125				       jc error
+    126				       mov bx, denom
+    127				       div bx
+    128				       mov num,	ax
+    129				       mov ax, dx
+    130				       mov nom,	ax
+    131				       jmp finishs
+    132
+    133				     ;xpar=0 z=5
+    134				       x_zero:
+    135					 mov ax, 5
+    136					 mov num, ax
+    137					 jmp finishs
+    138
+    139				     ;xpar<0 z=5*xpar^2/(1-xpar)
+    140				       x_less:
+    141					 mov ax, xpar
+    142					 neg ax
+    143					 jo error
+    144					 add ax, 1
+    145					 jc error
+    146					 mov denom, ax
+    147					 sub ax, 1
+    148					 mov bx, ax
+    149					 mul bx
+    150					 jc error
+    151					 mov bx, 5
+    152					 mul bx
+    153					 jc error
+    154					 mov bx, denom
+    155					 div bx
+    156					 mov num, ax
+    157					 mov ax, dx
+    158					 mov nom, ax
+    159					 jmp finishs
+    160
+    161				     ;xpar out of diapason
+    162				       error:
+    163					 mov is_error, 2
+    164
+    165				       finishs:
+    166				     endm
+    167
+    168				     result_print macro	number
+    169				     local m1, m2
+    170
+    171				     ;prepare to split number into digits
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 4
+Lab5_2.asm
+
+
+
+    172				       mov ax, number
+    173				       xor cx, cx
+    174				       mov bx, 10
+    175
+    176				     ;split it into digits and write it	down
+    177				       m1:
+    178					 xor dx, dx
+    179					 div bx
+    180					 add dl, '0'
+    181					 push dx
+    182					 inc cx
+    183					 test ax, ax
+    184					 jnz m1
+    185
+    186				     ;print these digits in correct order
+    187				       m2:
+    188					 pop ax
+    189					 int 29h
+    190					 loop m2
+    191				     endm
+    192
+    193				     exit macro
+    194
+    195					 mov AH, 4CH
+    196					 int 21H
+    197				     endm
+    198
+    199				     error_check macro
+    200				     local raise_error_1, raise_error_2, continue
+    201
+    202				       cmp is_error, 1
+    203				       je raise_error_1
+    204				       cmp is_error, 2
+    205				       je raise_error_2
+    206				       jmp continue
+    207
+    208				     ;invalid symbol(s)	error
+    209				       raise_error_1:
+    210					 LEA dx, error_message_1
+    211					 MOV ah,9
+    212					 INT 21h
+    213					 exit
+    214
+    215				     ;wrong number error
+    216				       raise_error_2:
+    217					 LEA dx, error_message_2
+    218					 MOV ah,9
+    219					 INT 21h
+    220					 exit
+    221
+    222				       continue:
+    223				     endm
+    224
+    225				     res_fraction macro
+    226				     local frac, end_p
+    227
+    228				     ;printing of the result
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 5
+Lab5_2.asm
+
+
+
+    229				       cmp num,	0
+    230				       je frac
+    231				       result_print num
+    232				       mov al, ' '
+    233				       int 29h
+    234
+    235				       cmp nom,	0
+    236				       jne frac
+    237				       jmp end_p
+    238
+    239				     ;printing of the fraction
+    240				       frac:
+    241					 result_print nom
+    242					 mov al, '/'
+    243					 int 29h
+    244					 result_print denom
+    245
+    246				       end_p:
+    247				     endm
+    248
+    249	0000			     STSEG SEGMENT PARA	STACK "STACK"
+    250	0000  40*(53 54	41 43 4B)    DB	64 DUP("STACK")
+    251	0140			     STSEG ENDS
+    252
+    253	0000			     DSEG SEGMENT PARA PUBLIC "DATA"
+    254	0000  0000		     x dw 0
+    255	0002  0000		     nom dw 0
+    256	0004  0000		     denom dw 0
+    257	0006  07 ?? 07*(20 24)	     inar db 7,?,7 dup (" $")
+    258	0016  0D 0A 45 6E 74 65	72+  input_tip db 13, 10, "Enter x in [-114;-1], {0} or	[1;254]	==> $"
+    259	      20 78 20 69 6E 20	5B+
+    260	      2D 31 31 34 3B 2D	31+
+    261	      5D 2C 20 7B 30 7D	20+
+    262	      6F 72 20 5B 31 3B	32+
+    263	      35 34 5D 20 3D 3D	3E+
+    264	      20 24
+    265	0042  00		     is_negative db 0
+    266	0043  0000		     num dw 0
+    267	0045  0000		     digit dw 0
+    268	0047  00		     is_error db 0
+    269	0048  49 6E 76 61 6C 69	64+  error_message_1 db	"Invalid symbol(s)!$"
+    270	      20 73 79 6D 62 6F	6C+
+    271	      28 73 29 21 24
+    272	005B  4E 75 6D 62 65 72	20+  error_message_2 db	"Number	out of diapason!$"
+    273	      6F 75 74 20 6F 66	20+
+    274	      64 69 61 70 61 73	6F+
+    275	      6E 21 24
+    276	0073			     DSEG ENDS
+    277
+    278	0000			     CSEG SEGMENT PARA PUBLIC "CODE"
+    279				     ASSUME CS:CSEG, DS:DSEG, SS:STSEG
+    280
+    281	0000			     main proc
+    282
+    283				     ;ds initialisation
+    284	0000  B8 0000s		       mov ax, dseg
+    285	0003  8E D8		       mov ds, ax
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 6
+Lab5_2.asm
+
+
+
+    286
+    287				     ;showing a	tip
+    288	0005  BA 0016r		       lea dx, input_tip
+    289	0008  B4 09		       mov ah, 9
+    290	000A  CD 21		       int 21h
+    291
+    292				     ;input of number
+    293				       input_digit
+1   294	000C  BA 0006r		       lea dx, inar
+1   295	000F  B4 0A		       mov ah, 10
+1   296	0011  CD 21		       int 21h
+1   297	0013  B0 0A		       mov al,10
+1   298	0015  CD 29		       int 29h
+1   299	0017  B0 0D		       mov al,13
+1   300	0019  CD 29		       int 29h
+    301				       str_to_int inar
+1   302	001B  BE 0008r		       mov si, offset inar + 2
+1   303	001E  B9 0000		       mov cx, 0
+1   304	0021  B8 0000		       mov ax, 0
+1   305	0024  A0 0007r		       mov al, inar + 1
+1   306	0027  3C 00		       cmp al, 0
+1   307	0029  74 4C		       je ??0003
+1   308	002B			       ??0000:
+1   309	002B  B8 0000			 mov ax, 0
+1   310	002E  A0 0007r			 mov al, inar +	1
+1   311	0031  3A C1			 cmp al, cl
+1   312	0033  74 52			 je ??0005
+1   313	0035  8A 04			 mov al, [si]
+1   314	0037  3C 30			 cmp al, '0'
+1   315	0039  7C 09			 jl ??0001
+1   316	003B  3C 39			 cmp al, '9'
+1   317	003D  7F 38			 jg ??0003
+1   318	003F  41			 inc cx
+1   319	0040  46			 inc si
+1   320	0041  EB 13 90			 jmp ??0002
+1   321	0044			       ??0001:
+1   322	0044  3C 2D			 cmp al, '-'
+1   323	0046  75 2F			 jne ??0003
+1   324	0048  83 F9 00			 cmp cx, 0
+1   325	004B  75 2A			 jne ??0003
+1   326	004D  C6 06 0042r 01		 mov is_negative, 1
+1   327	0052  41			 inc cx
+1   328	0053  46			 inc si
+1   329	0054  EB D5			 jmp ??0000
+1   330	0056			       ??0002:
+1   331	0056  2C 30			 sub al, '0'
+1   332	0058  A3 0045r			 mov digit, ax
+1   333	005B  BB 000A			 mov bx, 10
+1   334	005E  A1 0043r			 mov ax, num
+1   335	0061  F7 E3			 mul bx
+1   336	0063  72 1A			 jc ??0004
+1   337	0065  78 18			 js ??0004
+1   338	0067  A3 0043r			 mov num, ax
+1   339	006A  A1 0045r			 mov ax, digit
+1   340	006D  01 06 0043r		 add num, ax
+1   341	0071  72 0C			 jc ??0004
+1   342	0073  78 0A			 js ??0004
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 7
+Lab5_2.asm
+
+
+
+1   343	0075  EB B4			 jmp ??0000
+1   344	0077			       ??0003:
+1   345	0077  C6 06 0047r 01		 mov is_error, 1
+1   346	007C  EB 14 90			 jmp ??0006
+1   347	007F			       ??0004:
+1   348	007F  C6 06 0047r 02		 mov is_error, 2
+1   349	0084  EB 0C 90			 jmp ??0006
+1   350	0087			       ??0005:
+1   351	0087  80 3E 0042r 01		 cmp is_negative, 1
+1   352	008C  75 04			 jne ??0006
+1   353	008E  F7 1E 0043r		 neg num
+1   354	0092			       ??0006:
+    355				       error_check
+1   356	0092  80 3E 0047r 01	       cmp is_error, 1
+1   357	0097  74 0A		       je ??0007
+1   358	0099  80 3E 0047r 02	       cmp is_error, 2
+1   359	009E  74 0E		       je ??0008
+1   360	00A0  EB 17 90		       jmp ??0009
+1   361	00A3			       ??0007:
+1   362	00A3  BA 0048r			 LEA dx, error_message_1
+1   363	00A6  B4 09			 MOV ah,9
+1   364	00A8  CD 21			 INT 21h
+1   365					 exit
+2   366	00AA  B4 4C			 mov AH, 4CH
+2   367	00AC  CD 21			 int 21H
+1   368	00AE			       ??0008:
+1   369	00AE  BA 005Br			 LEA dx, error_message_2
+1   370	00B1  B4 09			 MOV ah,9
+1   371	00B3  CD 21			 INT 21h
+1   372					 exit
+2   373	00B5  B4 4C			 mov AH, 4CH
+2   374	00B7  CD 21			 int 21H
+1   375	00B9			       ??0009:
+    376
+    377				     ;calculation
+    378	00B9  A1 0043r		       mov ax, num
+    379	00BC  A3 0000r		       mov x, ax
+    380				       calc_res	x
+1   381	00BF  83 3E 0000r 00	       cmp x, 0
+1   382	00C4  74 3F		       je ??000A
+1   383	00C6  7C 46		       jl ??000B
+1   384	00C8  A1 0000r		       mov ax, x
+1   385	00CB  05 0001		       add ax, 1
+1   386	00CE  72 6E		       jc ??000C
+1   387	00D0  8B D8		       mov bx, ax
+1   388	00D2  05 0001		       add ax, 1
+1   389	00D5  72 67		       jc ??000C
+1   390	00D7  F7 E3		       mul bx
+1   391	00D9  72 63		       jc ??000C
+1   392	00DB  A3 0004r		       mov denom, ax
+1   393	00DE  A1 0000r		       mov ax, x
+1   394	00E1  BB 0004		       mov bx, 4
+1   395	00E4  F7 E3		       mul bx
+1   396	00E6  72 56		       jc ??000C
+1   397	00E8  05 0007		       add ax, 7
+1   398	00EB  72 51		       jc ??000C
+1   399	00ED  BB 0005		       mov bx, 5
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 8
+Lab5_2.asm
+
+
+
+1   400	00F0  F7 E3		       mul bx
+1   401	00F2  72 4A		       jc ??000C
+1   402	00F4  8B 1E 0004r	       mov bx, denom
+1   403	00F8  F7 F3		       div bx
+1   404	00FA  A3 0043r		       mov num,	ax
+1   405	00FD  8B C2		       mov ax, dx
+1   406	00FF  A3 0002r		       mov nom,	ax
+1   407	0102  EB 3F 90		       jmp ??000D
+1   408	0105			       ??000A:
+1   409	0105  B8 0005			 mov ax, 5
+1   410	0108  A3 0043r			 mov num, ax
+1   411	010B  EB 36 90			 jmp ??000D
+1   412	010E			       ??000B:
+1   413	010E  A1 0000r			 mov ax, x
+1   414	0111  F7 D8			 neg ax
+1   415	0113  70 29			 jo ??000C
+1   416	0115  05 0001			 add ax, 1
+1   417	0118  72 24			 jc ??000C
+1   418	011A  A3 0004r			 mov denom, ax
+1   419	011D  2D 0001			 sub ax, 1
+1   420	0120  8B D8			 mov bx, ax
+1   421	0122  F7 E3			 mul bx
+1   422	0124  72 18			 jc ??000C
+1   423	0126  BB 0005			 mov bx, 5
+1   424	0129  F7 E3			 mul bx
+1   425	012B  72 11			 jc ??000C
+1   426	012D  8B 1E 0004r		 mov bx, denom
+1   427	0131  F7 F3			 div bx
+1   428	0133  A3 0043r			 mov num, ax
+1   429	0136  8B C2			 mov ax, dx
+1   430	0138  A3 0002r			 mov nom, ax
+1   431	013B  EB 06 90			 jmp ??000D
+1   432	013E			       ??000C:
+1   433	013E  C6 06 0047r 02		 mov is_error, 2
+1   434	0143			       ??000D:
+    435				       error_check
+1   436	0143  80 3E 0047r 01	       cmp is_error, 1
+1   437	0148  74 0A		       je ??000E
+1   438	014A  80 3E 0047r 02	       cmp is_error, 2
+1   439	014F  74 0E		       je ??000F
+1   440	0151  EB 17 90		       jmp ??0010
+1   441	0154			       ??000E:
+1   442	0154  BA 0048r			 LEA dx, error_message_1
+1   443	0157  B4 09			 MOV ah,9
+1   444	0159  CD 21			 INT 21h
+1   445					 exit
+2   446	015B  B4 4C			 mov AH, 4CH
+2   447	015D  CD 21			 int 21H
+1   448	015F			       ??000F:
+1   449	015F  BA 005Br			 LEA dx, error_message_2
+1   450	0162  B4 09			 MOV ah,9
+1   451	0164  CD 21			 INT 21h
+1   452					 exit
+2   453	0166  B4 4C			 mov AH, 4CH
+2   454	0168  CD 21			 int 21H
+1   455	016A			       ??0010:
+    456				       res_fraction
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 9
+Lab5_2.asm
+
+
+
+1   457	016A  83 3E 0043r 00	       cmp num,	0
+1   458	016F  74 28		       je ??0011
+1   459				       result_print num
+2   460	0171  A1 0043r		       mov ax, num
+2   461	0174  33 C9		       xor cx, cx
+2   462	0176  BB 000A		       mov bx, 10
+2   463	0179			       ??0013:
+2   464	0179  33 D2			 xor dx, dx
+2   465	017B  F7 F3			 div bx
+2   466	017D  80 C2 30			 add dl, '0'
+2   467	0180  52			 push dx
+2   468	0181  41			 inc cx
+2   469	0182  85 C0			 test ax, ax
+2   470	0184  75 F3			 jnz ??0013
+2   471	0186			       ??0014:
+2   472	0186  58			 pop ax
+2   473	0187  CD 29			 int 29h
+2   474	0189  E2 FB			 loop ??0014
+1   475	018B  B0 20		       mov al, ' '
+1   476	018D  CD 29		       int 29h
+1   477	018F  83 3E 0002r 00	       cmp nom,	0
+1   478	0194  75 03		       jne ??0011
+1   479	0196  EB 39 90		       jmp ??0012
+1   480	0199			       ??0011:
+1   481					 result_print nom
+2   482	0199  A1 0002r		       mov ax, nom
+2   483	019C  33 C9		       xor cx, cx
+2   484	019E  BB 000A		       mov bx, 10
+2   485	01A1			       ??0015:
+2   486	01A1  33 D2			 xor dx, dx
+2   487	01A3  F7 F3			 div bx
+2   488	01A5  80 C2 30			 add dl, '0'
+2   489	01A8  52			 push dx
+2   490	01A9  41			 inc cx
+2   491	01AA  85 C0			 test ax, ax
+2   492	01AC  75 F3			 jnz ??0015
+2   493	01AE			       ??0016:
+2   494	01AE  58			 pop ax
+2   495	01AF  CD 29			 int 29h
+2   496	01B1  E2 FB			 loop ??0016
+1   497	01B3  B0 2F			 mov al, '/'
+1   498	01B5  CD 29			 int 29h
+1   499					 result_print denom
+2   500	01B7  A1 0004r		       mov ax, denom
+2   501	01BA  33 C9		       xor cx, cx
+2   502	01BC  BB 000A		       mov bx, 10
+2   503	01BF			       ??0017:
+2   504	01BF  33 D2			 xor dx, dx
+2   505	01C1  F7 F3			 div bx
+2   506	01C3  80 C2 30			 add dl, '0'
+2   507	01C6  52			 push dx
+2   508	01C7  41			 inc cx
+2   509	01C8  85 C0			 test ax, ax
+2   510	01CA  75 F3			 jnz ??0017
+2   511	01CC			       ??0018:
+2   512	01CC  58			 pop ax
+2   513	01CD  CD 29			 int 29h
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 10
+Lab5_2.asm
+
+
+
+2   514	01CF  E2 FB			 loop ??0018
+1   515	01D1			       ??0012:
+    516				       exit
+1   517	01D1  B4 4C			 mov AH, 4CH
+1   518	01D3  CD 21			 int 21H
+    519	01D5  C3		       ret
+    520	01D6			     main endp
+    521
+    522	01D6			     CSEG ENDS
+    523				     END MAIN
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 11
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??0000				  Near	 CSEG:002B
+??0001				  Near	 CSEG:0044
+??0002				  Near	 CSEG:0056
+??0003				  Near	 CSEG:0077
+??0004				  Near	 CSEG:007F
+??0005				  Near	 CSEG:0087
+??0006				  Near	 CSEG:0092
+??0007				  Near	 CSEG:00A3
+??0008				  Near	 CSEG:00AE
+??0009				  Near	 CSEG:00B9
+??000A				  Near	 CSEG:0105
+??000B				  Near	 CSEG:010E
+??000C				  Near	 CSEG:013E
+??000D				  Near	 CSEG:0143
+??000E				  Near	 CSEG:0154
+??000F				  Near	 CSEG:015F
+??0010				  Near	 CSEG:016A
+??0011				  Near	 CSEG:0199
+??0012				  Near	 CSEG:01D1
+??0013				  Near	 CSEG:0179
+??0014				  Near	 CSEG:0186
+??0015				  Near	 CSEG:01A1
+??0016				  Near	 CSEG:01AE
+??0017				  Near	 CSEG:01BF
+??0018				  Near	 CSEG:01CC
+??DATE				  Text	 "05/08/23"
+??FILENAME			  Text	 "Lab5_2  "
+??TIME				  Text	 "14:57:39"
+??VERSION			  Number 0400
+@CPU				  Text	 0101H
+@CURSEG				  Text	 CSEG
+@FILENAME			  Text	 LAB5_2
+@WORDSIZE			  Text	 2
+DENOM				  Word	 DSEG:0004
+DIGIT				  Word	 DSEG:0045
+ERROR_MESSAGE_1			  Byte	 DSEG:0048
+ERROR_MESSAGE_2			  Byte	 DSEG:005B
+INAR				  Byte	 DSEG:0006
+INPUT_TIP			  Byte	 DSEG:0016
+IS_ERROR			  Byte	 DSEG:0047
+IS_NEGATIVE			  Byte	 DSEG:0042
+MAIN				  Near	 CSEG:0000
+NOM				  Word	 DSEG:0002
+NUM				  Word	 DSEG:0043
+X				  Word	 DSEG:0000
+
+Macro Name
+
+CALC_RES
+ERROR_CHECK
+EXIT
+INPUT_DIGIT
+RESULT_PRINT
+RES_FRACTION
+Turbo Assembler	 Version 4.0	    05/08/23 14:57:39	    Page 12
+Symbol Table
+
+
+
+STR_TO_INT
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CSEG				  16  01D6 Para	  Public  CODE
+DSEG				  16  0073 Para	  Public  DATA
+STSEG				  16  0140 Para	  Stack	  STACK
+

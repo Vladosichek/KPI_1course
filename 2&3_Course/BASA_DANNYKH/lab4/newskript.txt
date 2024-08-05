@@ -1,0 +1,29 @@
+SELECT COUNT(*) FROM seat WHERE seat_number > '25';
+
+SELECT SUM(price) FROM ticket WHERE price > '220';
+
+SELECT UPPER(name) FROM station;
+
+SELECT LOWER(name) FROM station;
+
+SELECT stop_id, AGE(finish_time, start_time) FROM stop;
+
+SELECT first_stop_id, last_stop_id FROM ticket GROUP BY first_stop_id, last_stop_id;  
+
+SELECT first_stop_id, last_stop_id FROM ticket GROUP BY first_stop_id, last_stop_id HAVING first_stop_id < '3';
+
+SELECT MIN(price) AS min, MAX(price) AS max FROM ticket HAVING MIN(price) <  MAX(price);
+
+SELECT *, ROW_NUMBER() OVER (ORDER BY price) FROM ticket;
+
+SELECT * FROM ticket ORDER BY first_stop_id ASC, last_stop_id DESC;
+
+CREATE TEMP VIEW gen_data AS SELECT buyer.buyer_id, buyer.passport_id, ticket.price, ticket.seat_id, ticket.first_stop_id FROM buyer 
+JOIN ticket ON ticket.buyer_id = buyer.buyer_id; 
+
+CREATE TEMP VIEW seat_travel AS SELECT gen_data.buyer_id, gen_data.seat_id, seat.seat_number, gen_data.first_stop_id, stop.start_time FROM gen_data 
+JOIN seat ON gen_data.seat_id = seat.seat_id JOIN stop ON gen_data.first_stop_id = stop.stop_id;
+
+ALTER VIEW seat_travel RENAME first_stop_id TO id_of_first_stop;
+
+SELECT pg_get_viewdef('seat_travel'::regclass);

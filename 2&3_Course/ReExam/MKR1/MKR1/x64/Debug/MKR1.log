@@ -1,0 +1,3 @@
+﻿  Source.cpp
+E:\Install\Projects\ReExam\MKR1\MKR1\Source.cpp(26,28): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  MKR1.vcxproj -> E:\Install\Projects\ReExam\MKR1\x64\Debug\MKR1.exe

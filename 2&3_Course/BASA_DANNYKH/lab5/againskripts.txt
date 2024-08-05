@@ -1,0 +1,38 @@
+CREATE TEMP TABLE IF NOT EXISTS arrarad(col1 integer, col2 integer);
+
+DO $$ DECLARE a integer = 100; b integer = 230; BEGIN IF a > b THEN RAISE NOTICE 'a is greater'; ELSE RAISE NOTICE 'b is greater'; END IF; END $$;
+
+DO $$ DECLARE a integer = 1; BEGIN WHILE a < 30 LOOP a = a * 3; RAISE NOTICE 'a=%', a; END LOOP; END $$;
+
+CREATE OR REPLACE PROCEDURE proctest() LANGUAGE SQL AS $$ INSERT INTO arrarad(col1, col2) VALUES(12, 57); $$;
+
+CREATE OR REPLACE PROCEDURE instest(val1 IN int, val2 IN int) LANGUAGE SQL AS $$ INSERT INTO arrarad(col1, col2) VALUES(val1, val2); $$;
+
+CREATE OR REPLACE PROCEDURE addvag( VID INOUT INT, VN INT, VT VARCHAR(50), TI INT) LANGUAGE plpgsql AS $$ BEGIN 
+INSERT INTO vagon(vagon_number, vagon_type, train_id) VALUES (VN, VT, TI) RETURNING vagon_id INTO VID; END $$;
+
+CREATE OR REPLACE PROCEDURE appvagt(VID INT, VT VARCHAR(50)) LANGUAGE plpgsql AS $$ 
+BEGIN UPDATE vagon SET vagon_type = VT WHERE vagon_id = VID; END $$;
+
+CREATE OR REPLACE PROCEDURE outg(VID IN INT, VN INOUT INT, VT INOUT VARCHAR(50), TID INOUT INT) LANGUAGE plpgsql 
+AS $$ BEGIN SELECT vagon_number, vagon_type, train_id INTO VN, VT, TID FROM vagon WHERE vagon_id = VID; END $$;
+
+CREATE OR REPLACE FUNCTION sum(val int, ad int) RETURNS int AS $$ DECLARE sum int; BEGIN sum = val + ad; RETURN sum; END; $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION oct(_col VARCHAR) RETURNS TABLE(col VARCHAR) AS $$ BEGIN RETURN QUERY EXECUTE 
+FORMAT('SELECT %I::varchar(255) FROM ticket', _col); END; $$ LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION taboutst() RETURNS TABLE(tid INT, bid INT, sid INT) AS $$ 
+BEGIN RETURN QUERY SELECT ticket_id, seat_id, buyer_id FROM ticket; END; $$ LANGUAGE 'plpgsql';
+
+DO $$ DECLARE curs refcursor; rec RECORD; BEGIN OPEN curs FOR SELECT * FROM ticket ORDER BY price DESC; FETCH curs INTO rec; RAISE NOTICE '%', rec; 
+FETCH curs INTO rec; RAISE NOTICE '%', rec; FETCH curs INTO rec; RAISE NOTICE '%', rec; CLOSE curs; END; $$;
+
+CREATE OR REPLACE FUNCTION deltr() RETURNS trigger AS $$ BEGIN RAISE NOTICE 'Ticket removed from table!'; RETURN NULL; END; $$ LANGUAGE plpgsql;
+CREATE TRIGGER deltr AFTER DELETE ON ticket FOR EACH ROW EXECUTE PROCEDURE deltr();
+
+CREATE OR REPLACE FUNCTION  updtr() RETURNS trigger AS $$ BEGIN RAISE NOTICE 'Ticket was updated!'; RETURN NULL; END; $$ LANGUAGE plpgsql;
+CREATE TRIGGER updtr AFTER UPDATE ON ticket FOR EACH ROW EXECUTE PROCEDURE updtr();
+
+CREATE OR REPLACE FUNCTION  instr() RETURNS trigger AS $$ BEGIN RAISE NOTICE 'Ticket added to table!'; RETURN NULL; END; $$ LANGUAGE plpgsql;
+CREATE TRIGGER instr AFTER INSERT ON ticket FOR EACH ROW EXECUTE PROCEDURE instr();

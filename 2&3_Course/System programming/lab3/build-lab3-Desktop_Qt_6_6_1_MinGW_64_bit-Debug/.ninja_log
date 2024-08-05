@@ -1,0 +1,45 @@
+# ninja log v5
+4	1169	7236431321298012	lab3_autogen/timestamp	21f0519857954dfe
+4	1169	7236431321298012	lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+4	1169	7236431321298012	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/timestamp	21f0519857954dfe
+1579	4435	7235825143646348	CMakeFiles/lab3.dir/main.cpp.obj	59e7634b36150e6a
+4	1169	7236431321298012	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+1471	4078	7235825140077717	CMakeFiles/lab3.dir/lab3_autogen/mocs_compilation.cpp.obj	ccddd6a63a18db46
+4224	5819	7236431367742713	lab3.exe	3d044341dfeb4f4f
+1173	4223	7236431351823744	CMakeFiles/lab3.dir/mainwindow.cpp.obj	b01863f302d5adcd
+5	523	7236437201286065	lab3_autogen/timestamp	21f0519857954dfe
+5	523	7236437201286065	lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+5	523	7236437201286065	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/timestamp	21f0519857954dfe
+5	523	7236437201286065	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+527	3367	7236437229706512	CMakeFiles/lab3.dir/mainwindow.cpp.obj	b01863f302d5adcd
+3368	4265	7236437238659598	lab3.exe	3d044341dfeb4f4f
+5	573	7236459110321684	lab3_autogen/timestamp	21f0519857954dfe
+5	573	7236459110321684	lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+5	573	7236459110321684	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/timestamp	21f0519857954dfe
+5	573	7236459110321684	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+576	5062	7236459155201654	CMakeFiles/lab3.dir/mainwindow.cpp.obj	b01863f302d5adcd
+5063	5950	7236459164054761	lab3.exe	3d044341dfeb4f4f
+4	529	7236460342700278	lab3_autogen/timestamp	21f0519857954dfe
+4	529	7236460342700278	lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+4	529	7236460342700278	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/timestamp	21f0519857954dfe
+4	529	7236460342700278	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+533	3311	7236460370509111	CMakeFiles/lab3.dir/mainwindow.cpp.obj	b01863f302d5adcd
+3311	4279	7236460380142549	lab3.exe	3d044341dfeb4f4f
+5	541	7236462810142713	lab3_autogen/timestamp	21f0519857954dfe
+5	541	7236462810142713	lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+5	541	7236462810142713	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/timestamp	21f0519857954dfe
+5	541	7236462810142713	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+544	3415	7236462838876020	CMakeFiles/lab3.dir/mainwindow.cpp.obj	b01863f302d5adcd
+3415	4350	7236462848208460	lab3.exe	3d044341dfeb4f4f
+5	1336	7236469624962190	lab3_autogen/timestamp	21f0519857954dfe
+5	1336	7236469624962190	lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+5	1336	7236469624962190	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/timestamp	21f0519857954dfe
+5	1336	7236469624962190	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+1340	4342	7236469655008394	CMakeFiles/lab3.dir/mainwindow.cpp.obj	b01863f302d5adcd
+4342	5900	7236469670559761	lab3.exe	3d044341dfeb4f4f
+5	1349	7236653213932934	lab3_autogen/timestamp	21f0519857954dfe
+5	1349	7236653213932934	lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+5	1349	7236653213932934	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/timestamp	21f0519857954dfe
+5	1349	7236653213932934	E:/Install/Projects/System programming/lab3/build-lab3-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/lab3_autogen/mocs_compilation.cpp	21f0519857954dfe
+1352	6012	7236653260553594	CMakeFiles/lab3.dir/mainwindow.cpp.obj	b01863f302d5adcd
+6012	7618	7236653276576695	lab3.exe	3d044341dfeb4f4f

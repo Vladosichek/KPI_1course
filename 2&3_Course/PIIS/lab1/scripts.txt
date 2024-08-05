@@ -1,0 +1,51 @@
+SELECT d.city, SUM(f.arr_delay) AS delay_sum
+FROM innodb_bts.flights f
+JOIN innodb_bts.airports d ON f.dest = d.iata_code
+GROUP BY d.city LIMIT 5;
+
+SELECT d.city, SUM(f.arr_delay) AS delay_sum
+FROM columnstore_bts.flights f
+JOIN columnstore_bts.airports d ON f.dest = d.iata_code
+GROUP BY d.city LIMIT 5;
+
+SELECT d.city, COUNT(*) AS flights_amount
+FROM innodb_bts.flights f
+JOIN innodb_bts.airports d ON f.dest = d.iata_code
+GROUP BY d.city LIMIT 5;
+
+SELECT d.city, COUNT(*) AS flights_amount
+FROM columnstore_bts.flights f
+JOIN columnstore_bts.airports d ON f.dest = d.iata_code
+GROUP BY d.city LIMIT 5;
+
+(SELECT d.city, AVG(f.arr_delay) as avg_delay
+ FROM innodb_bts.flights f
+ JOIN innodb_bts.airports d ON f.dest = d.iata_code
+ GROUP BY d.city ORDER BY avg_delay LIMIT 1) UNION
+(SELECT d.city, AVG(f.arr_delay) as avg_delay
+ FROM innodb_bts.flights f
+ JOIN innodb_bts.airports d ON f.dest = d.iata_code
+ GROUP BY d.city ORDER BY avg_delay DESC LIMIT 1);
+
+(SELECT d.city, AVG(f.arr_delay) as avg_delay
+ FROM columnstore_bts.flights f
+ JOIN columnstore_bts.airports d ON f.dest = d.iata_code
+ GROUP BY d.city ORDER BY avg_delay LIMIT 1) UNION
+(SELECT d.city, AVG(f.arr_delay) as avg_delay
+ FROM columnstore_bts.flights f
+ JOIN columnstore_bts.airports d ON f.dest = d.iata_code
+ GROUP BY d.city ORDER BY avg_delay DESC LIMIT 1);
+
+SELECT f.*
+FROM innodb_bts.flights f
+WHERE f.arr_delay > (SELECT AVG(f.arr_delay) FROM 
+innodb_bts.flights f);
+
+SELECT f.*
+FROM columnstore_bts.flights f
+WHERE f.arr_delay > (SELECT AVG(f.arr_delay) FROM 
+columnstore_bts.flights f);
+
+du /var/lib/mysql/innodb_bts -h
+
+CALL columnstore_info.table_usage('columnstore_bts', NULL);

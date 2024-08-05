@@ -1,0 +1,57 @@
+SELECT * FROM ticket WHERE buyer_id = 3;
+
+SELECT * FROM ticket WHERE price < 300;
+
+SELECT * FROM ticket WHERE price > 200 AND buyer_id < 4;
+
+SELECT * FROM ticket WHERE price = 214.22 OR buyer_id = 4;
+
+SELECT * FROM ticket WHERE NOT buyer_id = 4;
+
+SELECT * FROM ticket WHERE (price > 200 AND buyer_id < 4) OR NOT first_stop_id = 1;
+
+SELECT start_time, finish_time FROM stop;
+
+SELECT start_time, finish_time FROM stop WHERE start_time > '2022-11-05 16:00:00';
+
+SELECT * FROM ticket WHERE first_stop_id IN (2, 6);
+
+SELECT * FROM ticket WHERE first_stop_id BETWEEN '2' AND '6';
+
+SELECT * FROM trace WHERE name LIKE '%Lviv%';
+
+SELECT * FROM ticket WHERE price IS NOT NULL;
+
+SELECT price, (SELECT passport_id FROM buyer
+WHERE ticket.buyer_id = buyer.buyer_id), seat_id FROM ticket;
+
+SELECT * FROM (SELECT start_time, finish_time, number_in_trace FROM stop) 
+AS stop_data WHERE number_in_trace < '3';
+
+SELECT * FROM buyer WHERE EXISTS ( SELECT * FROM  ticket
+WHERE ticket.buyer_id = buyer.buyer_id);
+
+SELECT * FROM buyer WHERE buyer_id IN (
+SELECT buyer_id FROM ticket);
+
+SELECT * FROM ticket CROSS JOIN buyer;
+
+SELECT * FROM ticket, buyer  
+WHERE ticket.buyer_id = buyer.buyer_id;
+
+SELECT * FROM ticket, buyer  
+WHERE ticket.buyer_id = buyer.buyer_id AND ticket.first_stop_id = '1';
+
+SELECT * FROM buyer 
+INNER JOIN ticket ON ticket.buyer_id = buyer.buyer_id;
+
+SELECT * FROM buyer 
+LEFT OUTER JOIN ticket ON ticket.buyer_id = buyer.buyer_id;
+
+SELECT * FROM ticket 
+RIGHT OUTER JOIN buyer ON ticket.buyer_id = buyer.buyer_id;
+
+SELECT buyer_id, passport_id FROM buyer WHERE buyer_id IN (
+SELECT buyer_id FROM ticket) UNION
+SELECT seat_id, seat_number FROM seat WHERE seat_id IN (
+SELECT seat_id FROM ticket);

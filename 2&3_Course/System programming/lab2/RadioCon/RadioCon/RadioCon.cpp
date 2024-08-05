@@ -1,0 +1,200 @@
+﻿#include <iostream>
+#include <stdexcept>
+#include <string>
+#include "Database.h"
+using namespace std;
+using namespace Records;
+int displayMenu();
+void doAdd(Database& inDB);
+void doDeactualise(Database& inDB);
+void doRaise(Database& inDB);
+void doLower(Database& inDB);
+
+int main(int argc, char** argv)
+{
+	char typ;
+	cout << "Stack (s) or heap (other symbols)?";
+	cin >> typ;
+	if (typ == 's') {
+		Database* positionDB = new Database;
+
+		positionDB->addPosition("cod1", "nam1", 200, "nothing", "no");
+		positionDB->addPosition("cod2", "Jack", 150, "anything", "be tall");
+		positionDB->addPosition("cod3", "sunny", 30, "clean my room", "have vacuum cleaner");
+		positionDB->addPosition("cod4", "trudo", 0, "to obey me", "be quite");
+		positionDB->addPosition("cod5", "nam1_again", 12, "nothing_again", "be similar to nam1");
+
+		bool done = false;
+		while (!done) {
+			int selection = displayMenu();
+			switch (selection) {
+			case 1:
+				doAdd(*positionDB);
+				break;
+			case 2:
+				doDeactualise(*positionDB);
+				break;
+			case 3:
+				doRaise(*positionDB);
+				break;
+			case 4:
+				doLower(*positionDB);
+				break;
+			case 5:
+				positionDB->displayAll();
+				break;
+			case 6:
+				positionDB->displayActual();
+				break;
+			case 7:
+				positionDB->displayUnactual();
+				break;
+			case 0:
+				done = true;
+				break;
+			default:
+				cerr << "Unknown command." << endl;
+			}
+		}
+		delete positionDB;
+	}
+	else {
+		Database positionDB;
+
+		positionDB.addPosition("cod1", "nam1", 200, "nothing", "no");
+		positionDB.addPosition("cod2", "Jack", 150, "anything", "be tall");
+		positionDB.addPosition("cod3", "sunny", 30, "clean my room", "have vacuum cleaner");
+		positionDB.addPosition("cod4", "trudo", 0, "to obey me", "be quite");
+		positionDB.addPosition("cod5", "nam1_again", 12, "nothing_again", "be similar to nam1");
+
+		bool done = false;
+		while (!done) {
+			int selection = displayMenu();
+			switch (selection) {
+			case 1:
+				doAdd(positionDB);
+				break;
+			case 2:
+				doDeactualise(positionDB);
+				break;
+			case 3:
+				doRaise(positionDB);
+				break;
+			case 4:
+				doLower(positionDB);
+				break;
+			case 5:
+				positionDB.displayAll();
+				break;
+			case 6:
+				positionDB.displayActual();
+				break;
+			case 7:
+				positionDB.displayUnactual();
+				break;
+			case 0:
+				done = true;
+				break;
+			default:
+				cerr << "Unknown command." << endl;
+			}
+		}
+	}
+
+}
+int displayMenu()
+{
+	int selection;
+	cout << endl;
+	cout << "Position Database" << endl;
+	cout << "-----------------" << endl;
+	cout << "1) Add a new position" << endl;
+	cout << "2) Deactualise the position" << endl;
+	cout << "3) Raise salary" << endl;
+	cout << "4) Lower salary" << endl;
+	cout << "5) List all positions" << endl;
+	cout << "6) List all actual positions" << endl;
+	cout << "7) List all unactual positions" << endl;
+	cout << "0) Quit" << endl;
+	cout << endl;
+
+	cout << "---> ";
+	cin >> selection;
+	return selection;
+}
+void doAdd(Database& inDB)
+{
+	string Code, Name, Duties, Requirements;
+	int Salary;
+	cout << "Name of the position? ";
+	cin >> Name;
+	cout << "Code of the position? ";
+	cin >> Code;
+	cout << "Duties of the position? ";
+	cin >> Duties;
+	cout << "Requirements of the position? ";
+	cin >> Requirements;
+	cout << "Salary of the position? ";
+	cin >> Salary;
+	if (Salary < 0) {
+		cout << "Wromg input!\n";
+		return;
+	}
+	try {
+		inDB.addPosition(Code, Name, Salary, Duties, Requirements);
+	}
+	catch (std::exception ex) {
+		cerr << "Unable to add new position!" << endl;
+	}
+}
+void doDeactualise(Database& inDB)
+{
+	int positionNumber;
+	cout << "Position number? ";
+	cin >> positionNumber;
+	try {
+		Position& emp = inDB.getPosition(positionNumber);
+	}
+	catch (std::exception ex) {
+		cerr << "Unable to find position!" << endl;
+		return;
+	}
+	Position& emp = inDB.getPosition(positionNumber);
+	emp.deactualise();
+}
+void doRaise(Database& inDB)
+{
+	int positionNumber, raiseAmount;
+	cout << "Position number? ";
+	cin >> positionNumber;
+	try {
+		Position& emp = inDB.getPosition(positionNumber);
+	}
+	catch (std::exception ex) {
+		cerr << "Unable to find position!" << endl;
+		return;
+	}
+	Position& emp = inDB.getPosition(positionNumber);
+	cout << "Position " << emp.getName() << " salary: " << emp.getSalary() << endl;
+	cout << "How much? ";
+	cin >> raiseAmount;
+	emp.sRaise(raiseAmount);
+}
+void doLower(Database& inDB)
+{
+	int positionNumber, lowerAmount;
+	cout << "Position number? ";
+	cin >> positionNumber;
+	try {
+		Position& emp = inDB.getPosition(positionNumber);
+	}
+	catch (std::exception ex) {
+		cerr << "Unable to find position!" << endl;
+		return;
+	}
+	Position& emp = inDB.getPosition(positionNumber);
+	cout << "Position " << emp.getName() << " salary: " << emp.getSalary() << endl;
+	cout << "How much? ";
+	cin >> lowerAmount;
+	emp.sLower(lowerAmount);
+}

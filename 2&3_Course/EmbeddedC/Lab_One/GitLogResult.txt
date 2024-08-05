@@ -1,0 +1,73 @@
+User@DESKTOP-V5EN5AT MINGW64 /e/Install/Projects/EmbeddedC/Lab_One/softwareDevelopmentTechLog (main)
+$ git log
+commit f14e29c67bd191c52b2654837633e69ba56b74f0 (HEAD -> main)
+Author: Vladosichek <90644299+Vladosichek@users.noreply.github.com>
+Date:   Mon Oct 16 12:56:28 2023 +0300
+
+    IP-11 Vladyslav Pryshchepa
+
+commit ef8a470f30b6e8b3dab445f3b90f14f7fc41cb95 (origin/main, origin/HEAD)
+Author: Djekichoid <ponomarchuck.evgenyi@gmail.com>
+Date:   Sat Oct 14 16:32:39 2023 +0300
+
+    Added information about student Yevhenii Ponomarchuk
+
+commit 2436989860ddf8f9aafee778d1badcc66da4be72
+Author: Ilya <ilyaperetyat@gmail.com>
+Date:   Fri Oct 13 17:20:54 2023 +0300
+
+    Peretiatko added to list
+
+commit 1d1d0653d8d0cc86670060ee94c8f28639dfcb30
+Merge: 852dbc8 57e1277
+Author: denys-ko <80855139+denys-ko@users.noreply.github.com>
+Date:   Fri Oct 13 13:44:55 2023 +0300
+
+    Merge pull request #9 from Reflectia/main
+
+    Modify ik11 file by Nadiia Kachurynets
+
+commit 57e1277f427893d513fb73a7c7646a9e586b4d69
+Author: Nadiia <nade4ka3@gmail.com>
+Date:   Fri Oct 13 12:59:50 2023 +0300
+
+    Modify ik11 file by Nadiia Kachurynets
+
+commit 852dbc81045b96d6a4fe6f6a609e1888e702d722
+Author: Yulia Mikhaylenko <yuliamikhaylenko@ukr.net>
+Date:   Thu Oct 12 00:19:04 2023 +0300
+
+    Added information about student Yulia Mikhaylenko of group IO-13
+    Signed-off-by: Yulia Mikhaylenko <yuliamikhaylenko@ukr.net>
+
+commit 2fff3ac2511f10aad43fc311ca1b3d94e2365ef6
+Author: Taras Vytvytskyi <tarasvytvytskyy@gmail.com>
+Date:   Tue Oct 10 12:30:29 2023 +0300
+
+    Hello, Curel world v2
+    Sorted students by order in group
+
+    Signed-off-by: Taras Vytvytskyi <tarasvytvytskyy@gmail.com>
+
+commit 39e7bc1a71a500f2ba266f57fc872ce1ce2a467a
+Author: Taras Vytvytskyi <tarasvytvytskyy@gmail.com>
+Date:   Tue Oct 10 12:13:48 2023 +0300
+
+    Hello, Cruel world!
+
+    Signed-off-by: Taras Vytvytskyi <tarasvytvytskyy@gmail.com>
+
+commit bb6d187ee564527e0aab58f99ad86a53e70e9aad
+Author: karakurtz <tsybulenkobohdan@gmail.com>
+Date:   Mon Oct 9 23:33:04 2023 +0300
+
+    Added myself to the corresponding group
+
+commit a567141e7b5f1464771ceb449a5e97af38d4805b
+Author: Юлия Гудыма <gudyma.yullia@gmail.com>
+Date:   Sun Oct 8 21:26:57 2023 +0200
+
+    making changes to the file
+
+commit c699945dcddc9adf8ea0d382ca14871577794014
+Author: Юлия Гудыма <gudyma.yullia@gmail.com>

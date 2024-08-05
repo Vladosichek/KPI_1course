@@ -1,0 +1,5 @@
+﻿  Header.cpp
+E:\Install\Projects\ReExam\Task 1\Task 1\Header.cpp(99,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Task 1.cpp
+  Создание кода...
+  Task 1.vcxproj -> E:\Install\Projects\ReExam\Task 1\x64\Debug\Task 1.exe

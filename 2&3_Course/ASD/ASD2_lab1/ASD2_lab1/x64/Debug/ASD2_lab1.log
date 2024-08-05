@@ -1,0 +1,4 @@
+﻿  ASD2_lab1.cpp
+E:\Install\Projects\ASD\ASD2_lab1\ASD2_lab1\ASD2_lab1.cpp(68,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\Install\Projects\ASD\ASD2_lab1\ASD2_lab1\ASD2_lab1.cpp(123,10): warning C4244: /=: преобразование "double" в "int", возможна потеря данных
+  ASD2_lab1.vcxproj -> E:\Install\Projects\ASD\ASD2_lab1\x64\Debug\ASD2_lab1.exe

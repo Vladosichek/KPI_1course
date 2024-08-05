@@ -1,0 +1,8 @@
+﻿  MKR2.cpp
+E:\Install\Projects\ReExam\MKR2\MKR2\MKR2\MKR2.cpp(89,21): error C2504: B: не определен базовый класс
+E:\Install\Projects\ReExam\MKR2\MKR2\MKR2\MKR2.cpp(93,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\Install\Projects\ReExam\MKR2\MKR2\MKR2\MKR2.cpp(100,22): error C2504: B: не определен базовый класс
+E:\Install\Projects\ReExam\MKR2\MKR2\MKR2\MKR2.cpp(104,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\Install\Projects\ReExam\MKR2\MKR2\MKR2\MKR2.cpp(115,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\Install\Projects\ReExam\MKR2\MKR2\MKR2\MKR2.cpp(126,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\Install\Projects\ReExam\MKR2\MKR2\MKR2\MKR2.cpp(137,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных

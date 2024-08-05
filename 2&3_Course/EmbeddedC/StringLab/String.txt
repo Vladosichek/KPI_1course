@@ -1,0 +1,25 @@
+#include <stdio.h>  
+#include <string.h>  
+  
+void revString(char *inp); 
+      
+int main() 
+{  
+    char varStr[255];
+    printf ("Initial string: ");  
+    fgets(varStr, sizeof(varStr), stdin);  
+    revString(varStr);  
+    printf ("Result of string reversing: %s", varStr);
+}
+
+void revString(char *inp)  
+{  
+    int i, len, helpVar;  
+    len = strlen(inp);  
+    for (i = 0; i < len/2; i++)  
+    { 
+        helpVar = inp[i];  
+        inp[i] = inp[len - i - 1];  
+        inp[len - i - 1] = helpVar;  
+    }  
+}
